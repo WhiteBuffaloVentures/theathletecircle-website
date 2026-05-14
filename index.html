@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Athlete Circle — Build the Right Circle. Own Your Future.</title>
+<meta name="description" content="Helping athletes and families make smarter decisions about NIL, contracts, and long-term opportunities.">
+<meta name="theme-color" content="#1a0d2e">
+<meta property="og:title" content="The Athlete Circle">
+<meta property="og:description" content="Build the right circle. Own your future.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theathletecircle.com">
+<meta property="og:image" content="/assets/og-image.jpg">
+
+<!-- GA4 placeholder (replace G-XXXXXXX) -->
+<!--
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXX');</script>
+-->
+
+<style>
+:root{--purple-deep:#15082a;--purple-mid:#2E1A47;--purple-light:#3d2660;--gold:#C9A227;--gold-light:#D9B850;--white:#fff;--grey-100:#f4f4f6;--grey-300:#cbcbd1;--grey-500:#7a7a85;--dark:#1f1f24;--black:#0a0612;--max:1280px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--white);background:var(--purple-deep);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+.header{position:sticky;top:0;z-index:50;background:rgba(21,8,42,0.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(201,162,39,0.12)}
+.header-inner{max-width:var(--max);margin:0 auto;padding:18px 32px;display:flex;align-items:center;justify-content:space-between;gap:32px}
+.logo{display:flex;align-items:center;gap:14px}
+.logo-mark{width:48px;height:48px;border-radius:50%;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;background:radial-gradient(circle,var(--purple-mid) 0%,var(--purple-deep) 100%);letter-spacing:-1px}
+.logo-text{font-weight:900;font-size:13px;letter-spacing:2px;line-height:1.1}
+.logo-text small{display:block;color:var(--grey-300);font-weight:400;font-size:11px;letter-spacing:3px;margin-top:2px}
+nav.main-nav{display:flex;gap:32px}
+nav.main-nav a{font-size:13px;font-weight:600;letter-spacing:1.5px;padding:8px 0;border-bottom:2px solid transparent;transition:.2s}
+nav.main-nav a:hover{border-color:var(--gold);color:var(--gold-light)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;letter-spacing:1px;font-size:13px;padding:14px 24px;border-radius:4px;transition:.2s}
+.btn-gold{background:var(--gold);color:var(--black)}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 8px 20px rgba(201,162,39,0.3)}
+.btn-outline{background:transparent;color:var(--white);border:2px solid var(--white)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold-light)}
+.btn-arrow::after{content:"›";font-size:18px;font-weight:700;line-height:0}
+.btn-play::before{content:"";display:inline-block;width:18px;height:18px;background:var(--gold);border-radius:50%}
+
+.hero{position:relative;background:radial-gradient(ellipse at 70% 40%,var(--purple-light) 0%,var(--purple-mid) 40%,var(--purple-deep) 80%);padding:60px 32px 100px;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-100px;right:-100px;width:800px;height:800px;border:2px solid rgba(201,162,39,0.1);border-radius:50%;pointer-events:none}
+.hero::after{content:"";position:absolute;top:50px;right:50px;width:600px;height:600px;border:1px solid rgba(201,162,39,0.2);border-radius:50%;pointer-events:none}
+.hero-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:40px;align-items:center;position:relative;z-index:2}
+.hero-left h1{font-size:clamp(40px,5.2vw,72px);font-weight:900;line-height:1.0;letter-spacing:-2px;text-transform:uppercase}
+.hero-left h1 .gold{color:var(--gold)}
+.hero-left p{margin-top:24px;font-size:16px;line-height:1.6;color:var(--grey-300);max-width:420px}
+.hero-left .small-tag{margin-top:18px;font-size:14px;font-weight:600}
+.hero-left .small-tag .gold{color:var(--gold)}
+.hero-ctas{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+
+.hero-center{display:flex;justify-content:center;align-items:center;position:relative}
+.athlete-photo{width:100%;max-width:480px;aspect-ratio:3/4;background:linear-gradient(180deg,var(--purple-light) 0%,var(--purple-deep) 100%) center/cover;background-image:url('/assets/connor-hero.jpg');background-size:cover;background-position:center;border-radius:8px;display:flex;align-items:flex-end;justify-content:center;position:relative;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.5)}
+
+.hero-right{position:relative;padding-left:24px}
+.quote-mark{font-family:Georgia,serif;font-size:96px;color:var(--gold);line-height:0.5;font-weight:700}
+.hero-right .quote-text{font-size:clamp(24px,2.8vw,36px);font-weight:300;font-style:italic;line-height:1.25;margin-top:8px}
+.hero-right .quote-text .gold{color:var(--gold);font-style:italic;font-weight:500}
+.divider-gold{width:60px;height:3px;background:var(--gold);margin:24px 0 16px}
+.hero-right .athlete-name{font-size:18px;font-weight:800;letter-spacing:1.5px}
+.hero-right .athlete-title{font-size:13px;letter-spacing:1.5px;color:var(--grey-300);margin-top:4px}
+.hero-right .athlete-title strong{color:var(--gold);font-weight:700}
+
+.circle-section{background:var(--black);padding:80px 32px;position:relative}
+.circle-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1fr 2fr 1fr;gap:48px;align-items:start}
+.circle-left .eyebrow{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:3px;margin-bottom:16px;text-transform:uppercase}
+.circle-left h2{font-size:36px;font-weight:900;line-height:1.05;text-transform:uppercase;letter-spacing:-1px}
+.circle-left p{margin-top:24px;font-size:14px;color:var(--grey-300);line-height:1.7}
+.circle-icons{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;align-self:center}
+.circle-icon-card{text-align:center}
+.circle-icon-bubble{width:90px;height:90px;border-radius:50%;border:2px solid var(--gold);background:radial-gradient(circle,var(--purple-mid) 0%,var(--purple-deep) 100%);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.circle-icon-bubble svg{width:42px;height:42px;fill:var(--gold)}
+.circle-icon-card h4{font-size:13px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}
+.circle-icon-card p{font-size:11px;color:var(--grey-300);margin-top:8px;line-height:1.4}
+.circle-right{background:linear-gradient(180deg,var(--purple-mid) 0%,var(--purple-deep) 100%);border:1px solid rgba(201,162,39,0.25);border-radius:8px;padding:28px}
+.guide-cover{width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#2a1844 0%,#15082a 100%);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;border:1px solid rgba(201,162,39,0.2);position:relative}
+.guide-cover .ac-mark{font-family:Georgia,serif;font-weight:900;color:var(--gold);font-size:14px;letter-spacing:-1px;margin-bottom:auto;margin-top:8px}
+.guide-cover h3{font-size:24px;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;line-height:1.0;margin-top:auto}
+.guide-cover h3 span{display:block;color:var(--gold);margin-top:4px}
+.guide-cover .sub{font-size:9px;color:var(--grey-300);margin-top:14px;letter-spacing:1.2px;line-height:1.5}
+.guide-info{margin-top:20px}
+.guide-info .eyebrow{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:2px}
+.guide-info h4{font-size:20px;font-weight:900;margin-top:8px}
+.guide-info p{font-size:13px;color:var(--grey-300);margin-top:8px;line-height:1.5}
+.guide-info .btn{margin-top:16px;width:100%}
+
+.testimonial-bar{background:var(--purple-mid);padding:40px 32px;border-top:1px solid rgba(201,162,39,0.15);border-bottom:1px solid rgba(201,162,39,0.15)}
+.testimonial-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:auto 2fr 3fr;gap:40px;align-items:center}
+.testimonial-photo{width:140px;height:140px;border-radius:6px;background-image:url('/assets/connor-tunnel.jpg');background-size:cover;background-position:center;background-color:var(--purple-deep)}
+.testimonial-text h4{font-size:16px;font-weight:900;letter-spacing:1.5px}
+.testimonial-text .ttitle{font-size:12px;color:var(--grey-300);margin-top:4px;letter-spacing:1.5px}
+.testimonial-text .ttitle strong{color:var(--gold)}
+.testimonial-text .tquote{margin-top:14px;font-size:13px;color:var(--grey-300);font-style:italic;line-height:1.6}
+.trust-badges{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.trust-item{text-align:center}
+.trust-icon{width:46px;height:46px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center}
+.trust-icon svg{width:36px;height:36px;fill:var(--gold)}
+.trust-item h5{font-size:11px;font-weight:800;letter-spacing:1.5px;line-height:1.3}
+
+.final-cta{background:linear-gradient(135deg,var(--purple-light) 0%,var(--purple-mid) 100%);padding:48px 32px;border-bottom:4px solid var(--gold)}
+.final-cta-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.final-cta .eyebrow{font-size:13px;letter-spacing:2px;font-weight:600}
+.final-cta .eyebrow .gold{color:var(--gold)}
+.final-cta h2{font-size:42px;font-weight:900;letter-spacing:-1px;text-transform:uppercase;line-height:1.0;margin-top:8px}
+.final-cta h2 .gold{color:var(--gold)}
+.final-cta .sub{font-size:13px;color:var(--grey-300);margin-top:10px}
+
+footer{background:var(--black);padding:32px;color:var(--grey-300);border-top:1px solid rgba(201,162,39,0.1)}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px;letter-spacing:1px}
+footer a{color:var(--grey-300);margin-left:18px}footer a:hover{color:var(--gold)}
+
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(10,6,18,0.85);z-index:100;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(6px)}
+.modal-overlay.open{display:flex}
+.modal{background:var(--purple-mid);border:1px solid rgba(201,162,39,0.3);border-radius:8px;width:100%;max-width:480px;padding:36px;position:relative}
+.modal h3{font-size:24px;font-weight:900;text-transform:uppercase;letter-spacing:-0.5px}
+.modal h3 .gold{color:var(--gold)}
+.modal p{margin-top:8px;font-size:14px;color:var(--grey-300)}
+.modal-form{margin-top:20px;display:flex;flex-direction:column;gap:12px}
+.modal-form input{background:var(--purple-deep);color:var(--white);border:1px solid var(--purple-light);border-radius:4px;padding:14px;font-size:14px;font-family:inherit}
+.modal-form input:focus{outline:none;border-color:var(--gold)}
+.modal-form .btn{margin-top:8px}
+.modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:var(--purple-deep);color:var(--white);font-size:18px;font-weight:700}
+
+.mobile-toggle{display:none}
+@media (max-width:980px){
+  .hero-inner{grid-template-columns:1fr;gap:48px}.hero-right{padding-left:0}
+  .athlete-photo{max-width:340px;margin:0 auto}
+  .circle-inner{grid-template-columns:1fr;gap:32px}
+  .testimonial-inner{grid-template-columns:1fr}
+  nav.main-nav{display:none}
+  .mobile-toggle{display:flex;width:40px;height:40px;align-items:center;justify-content:center;background:var(--purple-light);border-radius:4px;font-size:20px}
+  .header .btn{display:none}
+}
+@media (max-width:640px){
+  .hero-left h1{font-size:42px}
+  .circle-icons{grid-template-columns:repeat(3,1fr);gap:18px}
+  .circle-icon-bubble{width:70px;height:70px}.circle-icon-bubble svg{width:32px;height:32px}
+  .trust-badges{grid-template-columns:repeat(2,1fr)}
+  .final-cta h2{font-size:30px}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="#" class="logo"><span class="logo-mark">AC</span><span class="logo-text">THE ATHLETE<br><small>CIRCLE</small></span></a>
+    <nav class="main-nav">
+      <a href="#home">HOME</a><a href="#circle">THE CIRCLE</a><a href="#resources">RESOURCES</a><a href="#contact">CONTACT</a>
+    </nav>
+    <button class="btn btn-gold btn-arrow" data-modal-open>GET THE FREE GUIDE</button>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <h1>BUILD THE <span class="gold">RIGHT CIRCLE.</span> OWN YOUR FUTURE.</h1>
+      <p>Helping athletes and families make smarter decisions about NIL, contracts, and long-term opportunities.</p>
+      <p class="small-tag">Because your future deserves the <span class="gold">right circle.</span></p>
+      <div class="hero-ctas">
+        <button class="btn btn-gold btn-arrow" data-modal-open>GET THE FREE GUIDE</button>
+        <a href="#story" class="btn btn-outline btn-play">WATCH CONNOR'S STORY</a>
+      </div>
+    </div>
+    <div class="hero-center"><div class="athlete-photo"></div></div>
+    <div class="hero-right">
+      <div class="quote-mark">&ldquo;</div>
+      <div class="quote-text">The right people in your corner change <span class="gold">everything</span></div>
+      <div class="divider-gold"></div>
+      <div class="athlete-name">CONNOR BARRY</div>
+      <div class="athlete-title">PENN STATE <strong>QUARTERBACK #17</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="circle-section" id="circle">
+  <div class="circle-inner">
+    <div class="circle-left">
+      <div class="eyebrow">THE CIRCLE</div>
+      <h2>YOU DON'T HAVE TO DO THIS ALONE.</h2>
+      <p>Behind every great athlete is a great support system. The Athlete Circle connects you with trusted professionals who protect your interests and help you win — on and off the field.</p>
+    </div>
+    <div class="circle-icons">
+      <div class="circle-icon-card"><div class="circle-icon-bubble"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z"/></svg></div><h4>LAWYER</h4><p>Protects your rights and your future.</p></div>
+      <div class="circle-icon-card"><div class="circle-icon-bubble"><svg viewBox="0 0 24 24"><path d="M16 4l-2 2 2 2-2 2 2 2 4-4-4-4zM8 4L4 8l4 4-2 2 2 2 2-2 2 2 4-4-2-2 2-2-4-4-2 2-2-2z"/></svg></div><h4>AGENT</h4><p>Maximizes opportunities and negotiates for you.</p></div>
+      <div class="circle-icon-card"><div class="circle-icon-bubble"><svg viewBox="0 0 24 24"><path d="M3 21h18v-2H3v2zM5 17h2v-7H5v7zm4 0h2V7H9v10zm4 0h2v-5h-2v5zm4 0h2V4h-2v13zM18 4l-1.5 1.5L20 9l-3-3z"/></svg></div><h4>FINANCIAL ADVISOR</h4><p>Builds your wealth and secures your tomorrow.</p></div>
+      <div class="circle-icon-card"><div class="circle-icon-bubble"><svg viewBox="0 0 24 24"><path d="M20.5 11.5h-1V8c0-.6-.4-1-1-1h-2c-.6 0-1 .4-1 1v3.5h-7V8c0-.6-.4-1-1-1H5.5c-.6 0-1 .4-1 1v3.5h-1c-.3 0-.5.2-.5.5v1c0 .3.2.5.5.5h1V17c0 .6.4 1 1 1h2c.6 0 1-.4 1-1v-3.5h7V17c0 .6.4 1 1 1h2c.6 0 1-.4 1-1v-3.5h1c.3 0 .5-.2.5-.5v-1c0-.3-.2-.5-.5-.5z"/></svg></div><h4>TRAINER</h4><p>Develops your body and performance.</p></div>
+      <div class="circle-icon-card"><div class="circle-icon-bubble"><svg viewBox="0 0 24 24"><path d="M12 12c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm0 2c-2.7 0-8 1.3-8 4v2h16v-2c0-2.7-5.3-4-8-4zm5.7-7.3l1 2 2.3.3-1.7 1.6.4 2.3L17.7 12l-2 1.1.4-2.3L14.4 9l2.3-.3 1-2z"/></svg></div><h4>MENTOR</h4><p>Guides your mindset and decisions.</p></div>
+    </div>
+    <div class="circle-right">
+      <div class="guide-cover">
+        <div class="ac-mark">AC<br>THE ATHLETE<br>CIRCLE</div>
+        <h3>THE ATHLETE <span>ROADMAP</span></h3>
+        <div class="sub">5 ESSENTIAL STEPS TO PROTECT YOUR FUTURE AND BUILD YOUR LEGACY</div>
+      </div>
+      <div class="guide-info">
+        <div class="eyebrow">FREE GUIDE</div>
+        <h4>The Athlete Roadmap</h4>
+        <p>5 essential steps every athlete and parent should know.</p>
+        <button class="btn btn-gold btn-arrow" data-modal-open>GET YOUR COPY</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial-bar" id="story">
+  <div class="testimonial-inner">
+    <div class="testimonial-photo"></div>
+    <div class="testimonial-text">
+      <h4>CONNOR BARRY</h4>
+      <div class="ttitle">PENN STATE <strong>QUARTERBACK</strong></div>
+      <div class="tquote">"Having the right people in my corner made all the difference. The Athlete Circle helps athletes build that foundation early."</div>
+    </div>
+    <div class="trust-badges">
+      <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z"/></svg></div><h5>TRUSTED BY<br>ATHLETES &amp; FAMILIES</h5></div>
+      <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 24 24"><path d="M5 4l-2 4v12h18V8l-2-4H5zm0 2h14l1 2H4l1-2zm7 6l-5 5h3v3h4v-3h3l-5-5z" transform="rotate(180 12 12)"/></svg></div><h5>EXPERT GUIDANCE<br>YOU CAN COUNT ON</h5></div>
+      <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 24 24"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v3c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0 0 11 17.9V19H7v2h10v-2h-4v-1.1A5.01 5.01 0 0 0 16.61 14.94 5.01 5.01 0 0 0 21 10V7c0-1.1-.9-2-2-2zM5 10V7h2v5.82A3.005 3.005 0 0 1 5 10z"/></svg></div><h5>BUILT FOR TODAY<br>PREPARED FOR TOMORROW</h5></div>
+      <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05C16.19 13.99 17 15.17 17 16.5V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div><h5>A CIRCLE THAT<br>HAS YOUR BACK</h5></div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta" id="contact">
+  <div class="final-cta-inner">
+    <div>
+      <div class="eyebrow">YOUR FUTURE. YOUR TEAM. <span class="gold">YOUR CIRCLE.</span></div>
+      <h2>GET <span class="gold">STARTED</span> TODAY.</h2>
+      <div class="sub">Join athletes who are making smarter decisions with the right guidance.</div>
+    </div>
+    <button class="btn btn-gold btn-arrow" data-modal-open>GET THE FREE GUIDE</button>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>&copy; 2026 The Athlete Circle. All rights reserved.</div>
+    <div>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/disclaimer.html">Disclaimer</a>
+      <a href="mailto:hello@theathletecircle.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modal" aria-hidden="true">
+  <div class="modal">
+    <button class="modal-close" data-modal-close>×</button>
+    <h3>GET THE FREE <span class="gold">ROADMAP</span></h3>
+    <p>5 essential steps every athlete and parent should know. Delivered to your inbox.</p>
+    <form class="modal-form" id="lead-form" name="lead" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="lead">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <input type="text" name="athlete_name" placeholder="Athlete Name (optional)">
+      <input type="text" name="sport_school" placeholder="Sport / School (optional)">
+      <input type="hidden" name="source" value="hero_cta">
+      <button type="submit" class="btn btn-gold btn-arrow">SEND ME THE GUIDE</button>
+    </form>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('[data-modal-open]').forEach(b=>b.addEventListener('click',()=>document.getElementById('modal').classList.add('open')));
+document.querySelectorAll('[data-modal-close]').forEach(b=>b.addEventListener('click',()=>document.getElementById('modal').classList.remove('open')));
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')document.getElementById('modal').classList.remove('open')});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('modal').classList.remove('open')});
+</script>
+</body>
+</html>

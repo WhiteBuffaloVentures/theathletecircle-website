@@ -1,0 +1,16 @@
+{
+  "name": "theathletecircle",
+  "version": "1.0.0",
+  "description": "The Athlete Circle - Advisory platform for student-athletes",
+  "scripts": {
+    "dev": "http-server",
+    "build": "echo 'Static site - no build needed'",
+    "start": "http-server -p 3000"
+  },
+  "keywords": ["athlete", "advisory", "NIL"],
+  "author": "Logan White",
+  "license": "MIT",
+  "engines": {
+    "node": "18.x"
+  }
+}

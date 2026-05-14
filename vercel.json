@@ -1,0 +1,10 @@
+{
+  "buildCommand": "echo 'Static site'",
+  "outputDirectory": ".",
+  "routes": [
+    {"src": "/terms", "dest": "/terms.html"},
+    {"src": "/privacy", "dest": "/privacy.html"},
+    {"src": "/disclaimer", "dest": "/disclaimer.html"},
+    {"src": "/(.*)", "dest": "/$1"}
+  ]
+}
