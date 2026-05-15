@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Your Athlete Circle — $99</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #15082a; color: #fff; padding: 40px; }
+        .container { max-width: 600px; margin: 0 auto; background: #2E1A47; border-radius: 8px; padding: 40px; }
+        h1 { font-size: 36px; margin-bottom: 12px; }
+        .price { font-size: 48px; font-weight: 900; color: #C9A227; margin: 20px 0; }
+        .features { list-style: none; margin: 20px 0; }
+        .features li { padding: 8px 0; padding-left: 24px; position: relative; }
+        .features li:before { content: "✓"; position: absolute; left: 0; color: #C9A227; }
+        #card-element { border: 1px solid #3d2660; border-radius: 4px; padding: 12px; margin: 20px 0; background: #15082a; }
+        button { background: #C9A227; color: #15082a; padding: 14px; width: 100%; font-weight: 700; border-radius: 4px; cursor: pointer; margin-top: 20px; }
+        button:hover { background: #D9B850; }
+        .message { margin-top: 20px; padding: 12px; border-radius: 4px; display: none; }
+        .error { background: #8B0000; color: #fff; }
+        .success { background: #006400; color: #fff; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Build Your Athlete Circle</h1>
+    <p style="color: #cbcbd1; margin-bottom: 20px;">Complete decision playbook for modern athletes</p>
+    
+    <div class="price">$99</div>
+    
+    <ul class="features">
+        <li>5 Decision Modules + Bonus Content</li>
+        <li>Agent Evaluation Scorecard</li>
+        <li>NIL Deal Framework</li>
+        <li>Contract Red Flags & Playbooks</li>
+        <li>Connor Barry Case Study</li>
+    </ul>
+    
+    <form id="payment-form">
+        <div id="card-element"></div>
+        <div id="card-errors" role="alert"></div>
+        <button type="submit">Pay $99 & Get Instant Access</button>
+    </form>
+    
+    <div id="message" class="message"></div>
+</div>
+
+<script>
+const stripe = Stripe('pk_live_51THsHW1GzJDGQt5owLtZbf9XFmm1OrRbFoyyoj8vMJrzkqfOmC2fPTL3r56ff8Ab98zXVlnwbZ73IAVte11iHgqB002l9UPFvN');
+const elements = stripe.elements();
+const cardElement = elements.create('card');
+cardElement.mount('#card-element');
+
+document.getElementById('payment-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const { token } = await stripe.createToken(cardElement);
+  if (token) {
+    // Create charge on your backend
+    const response = await fetch('/api/create-charge', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        token: token.id,
+        amount: 9900,
+        currency: 'usd',
+        description: 'Build Your Athlete Circle Ebook'
+      })
+    });
+    
+    const result = await response.json();
+    if (result.success) {
+      window.location.href = '/post-purchase?session=' + result.session_id;
+    } else {
+      document.getElementById('message').className = 'message error';
+      document.getElementById('message').textContent = result.error;
+      document.getElementById('message').style.display = 'block';
+    }
+  }
+});
+
+cardElement.addEventListener('change', (e) => {
+  const displayError = document.getElementById('card-errors');
+  displayError.textContent = e.error ? e.error.message : '';
+});
+</script>
+</body>
+</html>
