@@ -7,10 +7,17 @@
     "build": "echo 'Static site - no build needed'",
     "start": "http-server -p 3000"
   },
-  "keywords": ["athlete", "advisory", "NIL"],
+  "keywords": [
+    "athlete",
+    "advisory",
+    "NIL"
+  ],
   "author": "Logan White",
   "license": "MIT",
   "engines": {
     "node": "24.x"
+  },
+  "dependencies": {
+    "resend": "^3.0.0"
   }
 }

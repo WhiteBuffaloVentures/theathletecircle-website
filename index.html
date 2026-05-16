@@ -578,6 +578,160 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+    
+        /* Get Started Section */
+        .get-started-section {
+            padding: 80px 24px;
+            background: rgba(21, 29, 56, 0.4);
+            border-top: 1px solid var(--border);
+        }
+        
+        .get-started-section h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 12px;
+            color: var(--text);
+            font-weight: 800;
+        }
+        
+        .get-started-section .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            font-size: 16px;
+        }
+        
+        .get-started-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .get-started-card {
+            background: rgba(10, 14, 39, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px 24px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .get-started-card:hover {
+            border-color: var(--accent);
+            background: rgba(21, 29, 56, 0.8);
+        }
+        
+        .get-started-card.featured {
+            border-color: var(--accent);
+            background: rgba(212, 148, 30, 0.08);
+            box-shadow: 0 0 30px rgba(212, 148, 30, 0.1);
+        }
+        
+        .get-started-card .card-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            display: block;
+        }
+        
+        .get-started-card h3 {
+            font-size: 20px;
+            color: var(--text);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .get-started-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 24px;
+            background: rgba(10, 14, 39, 0.8);
+            border-top: 1px solid var(--border);
+        }
+        
+        .contact-section h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 12px;
+            color: var(--text);
+            font-weight: 800;
+        }
+        
+        .contact-section .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            font-size: 16px;
+        }
+        
+        .contact-form-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            padding: 12px 16px;
+            background: rgba(21, 29, 56, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(21, 29, 56, 1);
+            box-shadow: 0 0 0 3px rgba(212, 148, 30, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+        
+        @media (max-width: 768px) {
+            .get-started-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .get-started-section h2,
+            .contact-section h2 {
+                font-size: 28px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -721,6 +875,84 @@
         </div>
     </section>
     
+    
+        <!-- GET STARTED SECTION -->
+        <section id="get-started" class="get-started-section">
+            <div class="container">
+                <h2>Ready to Build YOUR Circle?</h2>
+                <p class="section-subtitle">Start with the right guidance. Choose your path.</p>
+                
+                <div class="get-started-grid">
+                    <div class="get-started-card">
+                        <div class="card-icon">📖</div>
+                        <h3>Start Free</h3>
+                        <p>Understand the 5-role framework with our free guide. No commitment.</p>
+                        <a href="https://docs.google.com/document/d/1nCKKOKU5Q9z1an4YPpOVr7FUmBPBL3JAJeDjFPsB5fw/export?format=pdf" class="btn btn-secondary">Get Free Guide</a>
+                    </div>
+                    
+                    <div class="get-started-card featured">
+                        <div class="card-icon">🚀</div>
+                        <h3>Full Circle Kit</h3>
+                        <p>Connor's case study, templates, and implementation guide. Everything you need.</p>
+                        <a href="https://buy.stripe.com/test_bJe4graCi4RubySdzwaMU00" class="btn btn-primary">Get Circle Kit - $97</a>
+                    </div>
+                    
+                    <div class="get-started-card">
+                        <div class="card-icon">💬</div>
+                        <h3>Get Guidance</h3>
+                        <p>Schedule a consultation to apply the Circle framework to your specific situation.</p>
+                        <a href="#contact" class="btn btn-secondary">Schedule Consultation</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CONTACT FORM SECTION -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2>Let's Talk About YOUR Circle</h2>
+                <p class="section-subtitle">Tell us about your situation and we'll help you build the right advisory.</p>
+                
+                <div class="contact-form-wrapper">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone (optional)</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="athlete">Athlete Name</label>
+                            <input type="text" id="athlete" name="athlete" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="sport">Sport / Background</label>
+                            <input type="text" id="sport" name="sport" placeholder="e.g., College Football, Professional Soccer, NIL Negotiations...">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">What's your situation?</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send My Message</button>
+                        <p id="form-status" style="margin-top: 16px; text-align: center; color: var(--accent); display: none;"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
     <footer>
         <p>&copy; 2026 The Athlete Circle. All rights reserved.</p>
         <p>
@@ -729,5 +961,67 @@
             <a href="/disclaimer.html">Disclaimer</a>
         </p>
     </footer>
+
+    <script>
+        const contactForm = document.getElementById('contact-form');
+        const formStatus = document.getElementById('form-status');
+        
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const athlete = document.getElementById('athlete').value;
+            const sport = document.getElementById('sport').value;
+            const message = document.getElementById('message').value;
+            
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        phone,
+                        athlete,
+                        sport,
+                        message,
+                    }),
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    formStatus.textContent = '✓ Message sent! We'll be in touch shortly.';
+                    formStatus.style.display = 'block';
+                    formStatus.style.color = 'var(--accent)';
+                    contactForm.reset();
+                    
+                    setTimeout(() => {
+                        formStatus.style.display = 'none';
+                    }, 5000);
+                } else {
+                    throw new Error(data.error || 'Failed to send message');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                formStatus.textContent = '✗ Error sending message. Please try again.';
+                formStatus.style.display = 'block';
+                formStatus.style.color = '#ff6b6b';
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+
 </body>
 </html>
