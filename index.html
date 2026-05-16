@@ -226,6 +226,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center top;
         }
         
         .hero-quote {
@@ -308,8 +309,17 @@
         }
         
         .role-icon {
-            font-size: 48px;
+            width: 64px;
+            height: 64px;
+            background: rgba(212, 148, 30, 0.15);
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
             margin-bottom: 16px;
+            color: var(--accent);
         }
         
         .role-card h4 {
@@ -435,10 +445,16 @@
         }
         
         .testimonial-content h3 {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 800;
             color: var(--text);
             margin-bottom: 24px;
+        }
+        
+        .testimonial-content h3 strong {
+            color: var(--accent);
+            display: block;
+            font-weight: 800;
         }
         
         .testimonial-content p {
@@ -450,6 +466,22 @@
         
         .testimonial-content strong {
             color: var(--text);
+        }
+        
+        .result-highlight {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .result-highlight p {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+        
+        .result-highlight strong {
+            color: var(--accent);
         }
         
         /* CTA Section */
@@ -612,7 +644,7 @@
                     <p>Performance. Health. Conditioning.</p>
                 </div>
                 <div class="role-card">
-                    <div class="role-icon">🧠</div>
+                    <div class="role-icon">🎯</div>
                     <h4>Mentor</h4>
                     <p>Perspective. Experience. Wisdom.</p>
                 </div>
@@ -642,7 +674,7 @@
                     <div class="funnel-number">2</div>
                     <h3>Circle Kit</h3>
                     <p>Connor's case study. Decision templates. Step-by-step guide.</p>
-                    <div class="price">$99</div>
+                    <div class="price">$97</div>
                 </div>
                 <div class="funnel-step">
                     <div class="funnel-number">3</div>
@@ -661,15 +693,16 @@
             
             <div class="testimonial-grid">
                 <div class="testimonial-image">
-                    <img src="connor-image4.jpg" alt="Connor Barry">
+                    <img src="connor-testimonial.jpg" alt="Connor Barry">
                 </div>
                 <div class="testimonial-content">
-                    <h3>From Pressure to Power</h3>
-                    <p><strong>High school senior. First agent call. First NIL offer. No framework.</strong></p>
-                    <p>Connor was receiving agent interest and brand opportunities. Pressure mounting. He had talent. He didn't have a Circle.</p>
+                    <h3><strong>It took discipline and devotion.</strong></h3>
+                    <p><strong>First agent call. First NIL offer. No framework.</strong> Connor was receiving agent interest and brand opportunities. He had talent. He didn't have a Circle.</p>
                     <p>So we built one. Lawyer first. Agent second. Financial advisor third. No shortcuts. No conflicts.</p>
-                    <p><strong style="color: var(--accent); display: block; margin-top: 16px;">Result:</strong> Protected. Positioned. Prepared for long-term success — not just the next deal.</p>
-                    <p style="margin-top: 24px; font-size: 13px;"><strong>His decision framework is in the Circle Kit.</strong></p>
+                    <div class="result-highlight">
+                        <p><strong style="color: var(--accent);">Result:</strong> Protected. Positioned. Prepared for long-term success — not just the next deal.</p>
+                        <p style="margin-top: 12px; font-size: 13px;">His decision framework is in the Circle Kit.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -678,10 +711,10 @@
     <section class="cta-section">
         <div class="section-container">
             <h2 class="cta-content" style="text-align: center;">Ready to Build <span class="accent">YOUR</span> Circle?</h2>
-            <p style="margin-bottom: 32px; color: var(--text-muted);">Join athletes who are making smarter decisions with the right guidance.</p>
+            <p style="margin-bottom: 32px; color: var(--text-muted); font-size: 15px;">Join athletes who are making smarter decisions with the right guidance.</p>
             <div class="cta-buttons">
                 <a href="/checkout#free" class="btn btn-primary">Get Free Roadmap</a>
-                <a href="/checkout#premium" class="btn btn-secondary">Get Circle Kit - $99</a>
+                <a href="/checkout#premium" class="btn btn-secondary">Get Circle Kit - $97</a>
             </div>
         </div>
     </section>
