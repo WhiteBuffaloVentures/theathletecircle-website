@@ -1,7 +1,4 @@
 {
-  "name": "athletecircle",
-  "buildCommand": "echo 'No build needed - static site'",
-  "outputDirectory": ".",
-  "env": [],
-  "alias": ["athletecircle.ai"]
+  "buildCommand": "echo 'Static site'",
+  "outputDirectory": "."
 }
