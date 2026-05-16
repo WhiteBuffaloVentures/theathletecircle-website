@@ -17,30 +17,28 @@
         }
         
         :root {
-            --primary: #0f172a;
-            --accent: #d97706;
-            --accent-light: #f59e0b;
-            --secondary: #1e293b;
-            --text: #1e293b;
-            --text-light: #64748b;
-            --bg: #ffffff;
-            --border: #e2e8f0;
-            --success: #10b981;
+            --dark: #0a0e27;
+            --dark-secondary: #151d38;
+            --accent: #d4941e;
+            --accent-light: #f4b860;
+            --text: #ffffff;
+            --text-muted: #b0b8c1;
+            --border: #2a3550;
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
             color: var(--text);
-            background: var(--bg);
+            background: var(--dark);
             line-height: 1.6;
         }
         
-        /* Header / Navigation */
+        /* Header */
         header {
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(10, 14, 39, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
             padding: 16px 24px;
@@ -59,23 +57,23 @@
             align-items: center;
             gap: 10px;
             font-weight: 700;
-            font-size: 18px;
-            color: var(--primary);
+            font-size: 16px;
+            color: var(--text);
             text-decoration: none;
-            letter-spacing: -0.5px;
+            letter-spacing: 1px;
         }
         
         .logo-icon {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            border-radius: 8px;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             font-weight: 900;
-            font-size: 18px;
+            font-size: 16px;
+            color: var(--accent);
         }
         
         nav {
@@ -85,10 +83,12 @@
         }
         
         nav a {
-            color: var(--text-light);
+            color: var(--text-muted);
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             transition: color 0.2s;
         }
         
@@ -96,22 +96,40 @@
             color: var(--accent);
         }
         
+        .cta-header {
+            background: var(--accent);
+            color: var(--dark);
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.2s;
+        }
+        
+        .cta-header:hover {
+            background: var(--accent-light);
+        }
+        
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
-            padding: 80px 24px;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-secondary) 100%);
+            padding: 100px 24px;
             overflow: hidden;
             position: relative;
+            border-bottom: 1px solid var(--border);
         }
         
         .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
+            top: -30%;
             right: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(217, 119, 6, 0.08) 0%, transparent 70%);
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(212, 148, 30, 0.12) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
@@ -128,26 +146,31 @@
         }
         
         .hero-content h1 {
-            font-size: 52px;
+            font-size: 56px;
             font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 20px;
-            line-height: 1.15;
+            color: var(--text);
+            margin-bottom: 24px;
+            line-height: 1.1;
             letter-spacing: -1px;
         }
         
+        .hero-content h1 .accent {
+            color: var(--accent);
+        }
+        
         .hero-content .subtitle {
-            font-size: 18px;
-            color: var(--text-light);
-            margin-bottom: 24px;
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
             line-height: 1.7;
         }
         
         .hero-content .value-prop {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--accent);
+            font-size: 15px;
+            color: var(--text-muted);
             margin-bottom: 32px;
+            line-height: 1.7;
+            font-weight: 500;
         }
         
         .hero-buttons {
@@ -158,8 +181,8 @@
         
         .btn {
             padding: 14px 28px;
-            border-radius: 8px;
-            font-size: 14px;
+            border-radius: 6px;
+            font-size: 13px;
             font-weight: 600;
             text-decoration: none;
             border: none;
@@ -167,247 +190,183 @@
             transition: all 0.3s;
             display: inline-block;
             text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            color: white;
+            background: var(--accent);
+            color: var(--dark);
         }
         
         .btn-primary:hover {
+            background: var(--accent-light);
             transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(217, 119, 6, 0.3);
         }
         
         .btn-secondary {
-            background: var(--secondary);
-            color: white;
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--accent);
         }
         
         .btn-secondary:hover {
-            background: var(--primary);
+            background: rgba(212, 148, 30, 0.1);
             transform: translateY(-2px);
         }
         
         .hero-visual {
-            background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%);
-            border-radius: 12px;
-            padding: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 400px;
-            font-size: 48px;
-            text-align: center;
-            color: var(--primary);
             position: relative;
-        }
-        
-        .hero-visual.with-image {
-            background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+            border-radius: 12px;
             overflow: hidden;
+            height: 500px;
         }
         
         .hero-visual img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 8px;
         }
         
-        /* Problem Section */
-        .section {
-            padding: 80px 24px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .section h2 {
-            font-size: 40px;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 48px;
-            text-align: center;
-            line-height: 1.2;
-        }
-        
-        .problem-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-        
-        .problem-list {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-        
-        .problem-item {
-            padding: 24px;
-            background: #fff5f1;
-            border-left: 4px solid var(--accent);
-            border-radius: 8px;
-        }
-        
-        .problem-item strong {
-            color: var(--accent);
-            display: block;
-            margin-bottom: 8px;
-        }
-        
-        .problem-item p {
-            color: var(--text-light);
-            font-size: 14px;
-        }
-        
-        .solution-highlight {
-            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-            padding: 40px;
-            border-radius: 12px;
-        }
-        
-        .solution-highlight h3 {
-            font-size: 24px;
-            color: var(--primary);
-            margin-bottom: 16px;
-        }
-        
-        /* Connor Section */
-        .connor-section {
-            background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
-            padding: 80px 24px;
-        }
-        
-        .connor-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-        
-        .connor-image {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .connor-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .connor-image::before {
-            content: '';
+        .hero-quote {
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(217, 119, 6, 0.1) 0%, rgba(217, 119, 6, 0) 100%);
-            pointer-events: none;
-        }
-        
-        .connor-content h2 {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 24px;
-        }
-        
-        .connor-content p {
-            font-size: 16px;
-            color: var(--text-light);
-            margin-bottom: 16px;
-            line-height: 1.8;
-        }
-        
-        .connor-content strong {
+            background: linear-gradient(to top, rgba(10, 14, 39, 0.95), transparent);
+            padding: 40px 24px 24px;
             color: var(--text);
         }
         
-        .result-badge {
-            background: #dcfce7;
-            padding: 16px;
-            border-radius: 8px;
-            margin-top: 24px;
-            border-left: 4px solid var(--success);
-        }
-        
-        .result-badge strong {
-            color: #15803d;
-            display: block;
+        .hero-quote-text {
+            font-size: 18px;
+            font-weight: 600;
             margin-bottom: 8px;
+            color: var(--text);
+            line-height: 1.5;
         }
         
-        /* Circle Framework */
-        .circle-framework {
-            background: white;
+        .hero-quote-author {
+            font-size: 12px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        
+        /* Framework Section */
+        .framework {
+            padding: 80px 24px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .section-label {
+            font-size: 12px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 44px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+        
+        .section-title .accent {
+            color: var(--accent);
+        }
+        
+        .section-desc {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            max-width: 600px;
+            line-height: 1.7;
         }
         
         .roles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 24px;
-            margin-top: 48px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
         }
         
         .role-card {
-            padding: 32px 24px;
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            transition: all 0.3s;
-        }
-        
-        .role-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-            border-color: var(--accent);
         }
         
         .role-icon {
-            font-size: 40px;
+            font-size: 48px;
             margin-bottom: 16px;
         }
         
         .role-card h4 {
-            font-size: 18px;
+            font-size: 15px;
             font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 12px;
+            color: var(--text);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .role-card p {
-            font-size: 14px;
-            color: var(--text-light);
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        
+        /* Principle Section */
+        .principle {
+            background: rgba(212, 148, 30, 0.08);
+            padding: 60px 24px;
+            margin-top: 48px;
+            border-left: 4px solid var(--accent);
+            border-radius: 8px;
+        }
+        
+        .principle h3 {
+            font-size: 24px;
+            color: var(--accent);
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+        
+        .principle p {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 12px;
         }
         
         /* Funnel Section */
-        .funnel-section {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-        }
-        
-        .funnel-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .funnel {
             padding: 80px 24px;
+            border-bottom: 1px solid var(--border);
         }
         
         .funnel-steps {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
+            gap: 40px;
             margin-top: 48px;
         }
         
         .funnel-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
         }
         
@@ -415,57 +374,111 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            color: white;
+            width: 56px;
+            height: 56px;
+            background: var(--accent);
+            color: var(--dark);
             border-radius: 50%;
             font-weight: 800;
-            font-size: 20px;
-            margin-bottom: 16px;
+            font-size: 24px;
+            margin-bottom: 20px;
         }
         
         .funnel-step h3 {
             font-size: 18px;
             font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 8px;
+            color: var(--text);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .funnel-step p {
-            font-size: 14px;
-            color: var(--text-light);
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            line-height: 1.6;
         }
         
         .funnel-step .price {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 800;
             color: var(--accent);
-            margin-top: 16px;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 24px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 48px;
+            align-items: center;
+        }
+        
+        .testimonial-image {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 400px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .testimonial-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-content h3 {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+        
+        .testimonial-content p {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+        
+        .testimonial-content strong {
+            color: var(--text);
         }
         
         /* CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-secondary) 100%);
             padding: 80px 24px;
             text-align: center;
+            border-bottom: 1px solid var(--border);
         }
         
         .cta-content h2 {
-            font-size: 40px;
+            font-size: 44px;
             font-weight: 800;
             margin-bottom: 24px;
-            color: white;
+            color: var(--text);
+        }
+        
+        .cta-content h2 .accent {
+            color: var(--accent);
         }
         
         .cta-content p {
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.9);
+            font-size: 15px;
+            color: var(--text-muted);
             margin-bottom: 32px;
-            max-width: 600px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.7;
         }
         
         .cta-buttons {
@@ -475,38 +488,17 @@
             flex-wrap: wrap;
         }
         
-        .btn-light {
-            background: white;
-            color: var(--primary);
-        }
-        
-        .btn-light:hover {
-            background: #f1f5f9;
-            transform: translateY(-2px);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-        
-        .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
-        }
-        
         /* Footer */
         footer {
-            background: var(--secondary);
-            color: rgba(255, 255, 255, 0.8);
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--text-muted);
             padding: 40px 24px;
             text-align: center;
-            font-size: 13px;
+            font-size: 12px;
         }
         
         footer a {
-            color: white;
+            color: var(--text);
             text-decoration: none;
             margin: 0 12px;
         }
@@ -518,8 +510,7 @@
         /* Responsive */
         @media (max-width: 768px) {
             .hero-container,
-            .problem-grid,
-            .connor-container,
+            .testimonial-grid,
             .funnel-steps {
                 grid-template-columns: 1fr;
                 gap: 40px;
@@ -529,8 +520,8 @@
                 font-size: 36px;
             }
             
-            .section h2 {
-                font-size: 28px;
+            .section-title {
+                font-size: 32px;
             }
             
             nav {
@@ -548,6 +539,10 @@
             .cta-buttons {
                 flex-direction: column;
             }
+            
+            .roles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -556,126 +551,137 @@
         <div class="header-container">
             <a href="/" class="logo">
                 <div class="logo-icon">◆</div>
-                The Athlete Circle
+                THE ATHLETE CIRCLE
             </a>
             <nav>
-                <a href="#framework">Framework</a>
+                <a href="#framework">The Circle</a>
                 <a href="#connor">Connor's Story</a>
-                <a href="#funnel">How It Works</a>
+                <a href="#funnel">Get Started</a>
+                <a href="#contact">Contact</a>
             </nav>
+            <a href="/checkout" class="cta-header">Get Free Guide ▶</a>
         </div>
     </header>
     
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1>Build the Right Team Around Your Athlete</h1>
-                <p class="subtitle">Student-athletes face major decisions earlier than ever. NIL. Agents. Contracts. Financial positioning. But most are navigating this alone.</p>
-                <p class="value-prop">The Athlete Circle is the trusted framework that helps you build the right advisory before big decisions are made.</p>
+                <h1>Build the <span class="accent">RIGHT CIRCLE.</span> Own Your Future.</h1>
+                <p class="subtitle">Helping athletes and families make smarter decisions about NIL, contracts, agents, and long-term success.</p>
+                <p class="value-prop">Because your future deserves the right circle.</p>
                 <div class="hero-buttons">
-                    <a href="#get-free" class="btn btn-primary">Get Free Roadmap</a>
-                    <a href="#get-premium" class="btn btn-secondary">Explore Circle Kit</a>
+                    <a href="/checkout#free" class="btn btn-primary">Get the Free Guide</a>
+                    <a href="#connor" class="btn btn-secondary">Watch Connor's Story</a>
                 </div>
             </div>
-            <div class="hero-visual with-image">
-                <img src="connor-image1.jpg" alt="Connor Barry">
-            </div>
-        </div>
-    </section>
-    
-    <section class="section circle-framework" id="framework">
-        <h2>The Framework: Five Roles. Clear Boundaries.</h2>
-        <p style="text-align: center; color: var(--text-light); font-size: 16px; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto;">
-            Every athlete needs a Circle. Each member protects a specific domain. When roles stay in lane, decisions become structured, aligned, and protected.
-        </p>
-        <div class="roles-grid">
-            <div class="role-card">
-                <div class="role-icon">⚖️</div>
-                <h4>Lawyer</h4>
-                <p>Reviews agreements. Identifies risk. Protects structure.</p>
-            </div>
-            <div class="role-card">
-                <div class="role-icon">🤝</div>
-                <h4>Agent</h4>
-                <p>Sources opportunities. Negotiates. Positions market.</p>
-            </div>
-            <div class="role-card">
-                <div class="role-icon">💰</div>
-                <h4>Financial Advisor</h4>
-                <p>Tax planning. Wealth building. Fiduciary standard.</p>
-            </div>
-            <div class="role-card">
-                <div class="role-icon">💪</div>
-                <h4>Trainer</h4>
-                <p>Performance. Health. Stays in their lane.</p>
-            </div>
-            <div class="role-card">
-                <div class="role-icon">🧠</div>
-                <h4>Mentor</h4>
-                <p>Perspective. Experience. Wisdom.</p>
-            </div>
-        </div>
-        <div style="margin-top: 60px; padding: 40px; background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%); border-radius: 12px; text-align: center;">
-            <p style="color: var(--primary); font-weight: 600; font-size: 16px;">
-                ✓ Mixing roles creates conflicts. Conflicts create bad decisions. In NIL, bad decisions are often irreversible.
-            </p>
-        </div>
-    </section>
-    
-    <section class="connor-section" id="connor">
-        <div class="connor-container">
-            <div class="connor-image">
-                <img src="connor-image4.jpg" alt="Connor Barry - Athlete">
-            </div>
-            <div class="connor-content">
-                <h2>Meet Connor Barry</h2>
-                <p><strong>High school senior. First agent contact. First NIL offer. No framework.</strong></p>
-                <p>Connor was where your athlete is. Agents calling. Brands interested. Pressure mounting. He had talent. He didn't have a Circle.</p>
-                <p>So we built one together. Lawyer first. Agent second. Financial advisor third. No shortcuts. No conflicts of interest.</p>
-                <div class="result-badge">
-                    <strong>✓ Result</strong>
-                    <p>Protected. Positioned. Prepared for long-term success — not just the next deal.</p>
+            <div class="hero-visual">
+                <img src="connor-image1.jpg" alt="Connor Barry - Athlete">
+                <div class="hero-quote">
+                    <div class="hero-quote-text">"The right people on your corner change everything."</div>
+                    <div class="hero-quote-author">Connor Barry, Penn State Football</div>
                 </div>
-                <p style="margin-top: 24px; font-size: 14px; color: var(--text-light);">
-                    His full case study + decision framework is in the Circle Kit.
-                </p>
             </div>
         </div>
     </section>
     
-    <section class="funnel-section" id="funnel">
-        <div class="funnel-container">
-            <h2>How It Works</h2>
+    <section class="framework" id="framework">
+        <div class="section-container">
+            <div class="section-label">The Foundation</div>
+            <h2 class="section-title">You Don't Have To Do This <span class="accent">Alone.</span></h2>
+            <p class="section-desc">Every successful athlete has a Circle. Five roles. Clear boundaries. Each member protects a specific domain.</p>
+            
+            <div class="roles-grid">
+                <div class="role-card">
+                    <div class="role-icon">⚖️</div>
+                    <h4>Lawyer</h4>
+                    <p>Reviews agreements. Identifies risk. Protects structure.</p>
+                </div>
+                <div class="role-card">
+                    <div class="role-icon">🤝</div>
+                    <h4>Agent</h4>
+                    <p>Sources opportunities. Negotiates. Positions market.</p>
+                </div>
+                <div class="role-card">
+                    <div class="role-icon">💰</div>
+                    <h4>Financial Advisor</h4>
+                    <p>Tax planning. Wealth building. Long-term strategy.</p>
+                </div>
+                <div class="role-card">
+                    <div class="role-icon">💪</div>
+                    <h4>Trainer</h4>
+                    <p>Performance. Health. Conditioning.</p>
+                </div>
+                <div class="role-card">
+                    <div class="role-icon">🧠</div>
+                    <h4>Mentor</h4>
+                    <p>Perspective. Experience. Wisdom.</p>
+                </div>
+            </div>
+            
+            <div class="principle">
+                <h3>The Golden Rule</h3>
+                <p><strong>When roles stay separate, you're protected.</strong></p>
+                <p>Your agent wants to make the deal. Your lawyer wants to protect you. Your financial advisor wants to optimize taxes. These are different jobs — hold them by different people. Mixing roles = conflicts of interest. Conflicts of interest = bad decisions.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="funnel" id="funnel">
+        <div class="section-container">
+            <div class="section-label">Your Funnel</div>
+            <h2 class="section-title">Get Started <span class="accent">Today.</span></h2>
+            
             <div class="funnel-steps">
                 <div class="funnel-step">
                     <div class="funnel-number">1</div>
                     <h3>Free Roadmap</h3>
-                    <p>Learn the framework. Understand the 5 roles. Get clarity.</p>
+                    <p>Learn the framework. Understand your Circle. Get clarity.</p>
                     <div class="price">Free</div>
                 </div>
                 <div class="funnel-step">
                     <div class="funnel-number">2</div>
                     <h3>Circle Kit</h3>
-                    <p>Connor's case study. Decision templates. Implementation guide.</p>
+                    <p>Connor's case study. Decision templates. Step-by-step guide.</p>
                     <div class="price">$99</div>
                 </div>
                 <div class="funnel-step">
                     <div class="funnel-number">3</div>
-                    <h3>Book a Call</h3>
-                    <p>Qualified athletes connect directly. Build the Circle. Own the future.</p>
-                    <div class="price">Advisory</div>
+                    <h3>Advisory Call</h3>
+                    <p>Book directly. Build your Circle. Get expert guidance.</p>
+                    <div class="price">Consultation</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="testimonials" id="connor">
+        <div class="section-container">
+            <div class="section-label">Real Athlete. Real Decisions.</div>
+            <h2 class="section-title">Connor's <span class="accent">Story.</span></h2>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-image">
+                    <img src="connor-image4.jpg" alt="Connor Barry">
+                </div>
+                <div class="testimonial-content">
+                    <h3>From Pressure to Power</h3>
+                    <p><strong>High school senior. First agent call. First NIL offer. No framework.</strong></p>
+                    <p>Connor was receiving agent interest and brand opportunities. Pressure mounting. He had talent. He didn't have a Circle.</p>
+                    <p>So we built one. Lawyer first. Agent second. Financial advisor third. No shortcuts. No conflicts.</p>
+                    <p><strong style="color: var(--accent); display: block; margin-top: 16px;">Result:</strong> Protected. Positioned. Prepared for long-term success — not just the next deal.</p>
+                    <p style="margin-top: 24px; font-size: 13px;"><strong>His decision framework is in the Circle Kit.</strong></p>
                 </div>
             </div>
         </div>
     </section>
     
     <section class="cta-section">
-        <div class="cta-content">
-            <h2>Ready to Build Your Circle?</h2>
-            <p>Start with the framework. Learn the system. Then build your advisory team with confidence.</p>
+        <div class="section-container">
+            <h2 class="cta-content" style="text-align: center;">Ready to Build <span class="accent">YOUR</span> Circle?</h2>
+            <p style="margin-bottom: 32px; color: var(--text-muted);">Join athletes who are making smarter decisions with the right guidance.</p>
             <div class="cta-buttons">
-                <a href="/checkout#free" class="btn btn-light" id="get-free">Get Free Roadmap</a>
-                <a href="/checkout#premium" class="btn btn-outline" id="get-premium">Explore the $99 Kit</a>
+                <a href="/checkout#free" class="btn btn-primary">Get Free Roadmap</a>
+                <a href="/checkout#premium" class="btn btn-secondary">Get Circle Kit - $99</a>
             </div>
         </div>
     </section>

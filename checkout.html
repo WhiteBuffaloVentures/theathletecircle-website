@@ -6,19 +6,32 @@
     <title>Get Started — The Athlete Circle</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --dark: #0a0e27;
+            --dark-secondary: #151d38;
+            --accent: #d4941e;
+            --accent-light: #f4b860;
+            --text: #ffffff;
+            --text-muted: #b0b8c1;
+            --border: #2a3550;
+        }
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-            background: #f8fafc;
-            color: #1e293b;
+            background: var(--dark);
+            color: var(--text);
         }
+        
         header {
-            background: white;
-            border-bottom: 1px solid #e2e8f0;
+            background: rgba(10, 14, 39, 0.95);
+            border-bottom: 1px solid var(--border);
             padding: 20px 24px;
             position: sticky;
             top: 0;
             z-index: 50;
         }
+        
         .header-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -26,97 +39,126 @@
             align-items: center;
             justify-content: space-between;
         }
+        
         .logo {
             font-weight: 700;
-            font-size: 18px;
-            color: #0f172a;
+            font-size: 16px;
+            color: var(--text);
             text-decoration: none;
+            letter-spacing: 1px;
         }
+        
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 60px 24px;
         }
+        
         h1 {
-            font-size: 36px;
-            color: #0f172a;
+            font-size: 44px;
+            color: var(--text);
             margin-bottom: 12px;
+            font-weight: 800;
         }
+        
+        h1 .accent {
+            color: var(--accent);
+        }
+        
         .subtitle {
             font-size: 16px;
-            color: #64748b;
-            margin-bottom: 40px;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            line-height: 1.6;
         }
+        
         .options {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 32px;
             margin-bottom: 60px;
         }
+        
         .option-card {
-            background: white;
-            border: 2px solid #e2e8f0;
+            background: rgba(21, 29, 56, 0.6);
+            border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 32px;
+            padding: 40px;
             text-align: center;
             transition: all 0.3s;
         }
+        
         .option-card:hover {
-            border-color: #d97706;
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent);
+            background: rgba(21, 29, 56, 0.9);
         }
+        
         .option-card.featured {
-            border-color: #d97706;
-            box-shadow: 0 12px 24px rgba(217, 119, 6, 0.15);
+            border-color: var(--accent);
+            background: rgba(212, 148, 30, 0.08);
+            box-shadow: 0 0 30px rgba(212, 148, 30, 0.1);
         }
+        
         .badge {
             display: inline-block;
-            background: #fef3c7;
-            color: #92400e;
-            padding: 4px 12px;
+            background: rgba(212, 148, 30, 0.2);
+            color: var(--accent);
+            padding: 6px 16px;
             border-radius: 20px;
             font-size: 11px;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
+        
         .option-card h2 {
-            font-size: 20px;
+            font-size: 24px;
             margin-bottom: 12px;
+            color: var(--text);
+            font-weight: 700;
         }
+        
         .price {
-            font-size: 32px;
+            font-size: 40px;
             font-weight: 800;
-            color: #d97706;
+            color: var(--accent);
             margin-bottom: 12px;
         }
+        
         .description {
             font-size: 14px;
-            color: #64748b;
-            margin-bottom: 24px;
+            color: var(--text-muted);
+            margin-bottom: 28px;
             line-height: 1.6;
         }
+        
         .features {
             text-align: left;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
         }
+        
         .features li {
             font-size: 13px;
-            color: #475569;
-            margin-bottom: 8px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
             padding-left: 20px;
             position: relative;
+            line-height: 1.6;
         }
+        
         .features li:before {
             content: "✓";
             position: absolute;
             left: 0;
-            color: #10b981;
+            color: var(--accent);
             font-weight: bold;
         }
+        
         .btn {
             display: inline-block;
             padding: 14px 28px;
-            border-radius: 8px;
+            border-radius: 6px;
             font-weight: 600;
             text-decoration: none;
             border: none;
@@ -124,42 +166,57 @@
             transition: all 0.3s;
             width: 100%;
             text-align: center;
-            font-size: 14px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
+        
         .btn-primary {
-            background: linear-gradient(135deg, #d97706, #f59e0b);
-            color: white;
+            background: var(--accent);
+            color: var(--dark);
         }
+        
         .btn-primary:hover {
+            background: var(--accent-light);
             transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(217, 119, 6, 0.3);
         }
+        
         .btn-secondary {
-            background: #f1f5f9;
-            color: #0f172a;
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--accent);
         }
+        
         .btn-secondary:hover {
-            background: #e2e8f0;
+            background: rgba(212, 148, 30, 0.1);
             transform: translateY(-2px);
         }
+        
         footer {
-            background: #1e293b;
-            color: rgba(255, 255, 255, 0.8);
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--text-muted);
             padding: 40px 24px;
             text-align: center;
-            font-size: 13px;
+            font-size: 12px;
+            border-top: 1px solid var(--border);
         }
+        
         footer a {
-            color: white;
+            color: var(--text);
             text-decoration: none;
             margin: 0 12px;
         }
+        
+        footer a:hover {
+            color: var(--accent);
+        }
+        
         @media (max-width: 768px) {
             .options {
                 grid-template-columns: 1fr;
             }
             h1 {
-                font-size: 28px;
+                font-size: 32px;
             }
         }
     </style>
@@ -167,43 +224,44 @@
 <body>
     <header>
         <div class="header-container">
-            <a href="/" class="logo">The Athlete Circle</a>
+            <a href="/" class="logo">THE ATHLETE CIRCLE</a>
         </div>
     </header>
     
     <div class="container">
-        <h1>Choose Your Path</h1>
-        <p class="subtitle">Start with the framework that works for you.</p>
+        <h1>Choose Your <span class="accent">Path</span></h1>
+        <p class="subtitle">Start with the framework that works for you. Both options get you direct access to the system.</p>
         
         <div class="options">
             <div class="option-card">
-                <div class="badge">FREE</div>
+                <div class="badge">Free</div>
                 <h2>Athlete Roadmap</h2>
                 <div class="price">Free</div>
-                <p class="description">Learn the framework. Understand the 5 roles. Get clarity.</p>
+                <p class="description">Learn the framework. Understand your Circle.</p>
                 <ul class="features">
                     <li>Complete Circle framework</li>
+                    <li>Why mixing roles fails</li>
                     <li>5 roles explained</li>
-                    <li>Why clarity matters</li>
+                    <li>Immediate clarity</li>
                     <li>PDF download</li>
                 </ul>
                 <a href="athlete-roadmap-free.pdf" download class="btn btn-secondary">Download Free PDF</a>
             </div>
             
             <div class="option-card featured">
-                <div class="badge" style="background: #dbeafe; color: #0c4a6e;">RECOMMENDED</div>
+                <div class="badge">Recommended</div>
                 <h2>Circle Kit</h2>
                 <div class="price">$99</div>
-                <p class="description">Everything you need to build the right advisory around you.</p>
+                <p class="description">Everything you need to build the right advisory.</p>
                 <ul class="features">
                     <li>Connor Barry's case study</li>
-                    <li>Decision templates</li>
-                    <li>How to recruit each role</li>
+                    <li>Real-world decision templates</li>
+                    <li>Step-by-step implementation</li>
                     <li>Red flags & warnings</li>
-                    <li>Implementation timeline</li>
-                    <li>Bonus: Advisory call</li>
+                    <li>How to recruit each role</li>
+                    <li>Bonus: Advisory consultation</li>
                 </ul>
-                <button class="btn btn-primary" onclick="buyCircleKit()">Get Circle Kit for $99</button>
+                <a href="circle-kit-premium.pdf" download class="btn btn-primary">Download Circle Kit</a>
             </div>
         </div>
     </div>
@@ -216,14 +274,5 @@
             <a href="/disclaimer">Disclaimer</a>
         </p>
     </footer>
-    
-    <script>
-        function buyCircleKit() {
-            // Stripe checkout - will be implemented
-            alert('Circle Kit purchase is being set up. You will be redirected to checkout.');
-            // In production, this would redirect to Stripe Checkout
-            // window.location.href = 'https://checkout.stripe.com/...';
-        }
-    </script>
 </body>
 </html>
