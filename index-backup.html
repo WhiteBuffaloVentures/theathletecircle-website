@@ -1000,7 +1000,14 @@
                 const data = await response.json();
                 
                 if (response.ok) {
-                    window.location.href = '/success.html';
+                    formStatus.textContent = '✓ Message sent! We'll be in touch shortly.';
+                    formStatus.style.display = 'block';
+                    formStatus.style.color = 'var(--accent)';
+                    contactForm.reset();
+                    
+                    setTimeout(() => {
+                        formStatus.style.display = 'none';
+                    }, 5000);
                 } else {
                     throw new Error(data.error || 'Failed to send message');
                 }

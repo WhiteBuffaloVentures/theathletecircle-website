@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Received — The Athlete Circle</title>
+    <meta name="description" content="Thank you for reaching out to The Athlete Circle.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        :root {
+            --dark: #0a0e27;
+            --dark-secondary: #151d38;
+            --accent: #d4941e;
+            --accent-light: #f4b860;
+            --text: #ffffff;
+            --text-muted: #b0b8c1;
+            --border: #2a3550;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            color: var(--text);
+            background: var(--dark);
+            line-height: 1.6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 24px;
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 24px;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 16px;
+            color: var(--accent);
+        }
+        
+        .success-container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            margin-top: 80px;
+            animation: fadeIn 0.6s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .success-icon {
+            font-size: 80px;
+            margin-bottom: 24px;
+            display: block;
+            animation: scaleIn 0.6s ease-out;
+        }
+        
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        h1 {
+            font-size: 44px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--text);
+            line-height: 1.2;
+        }
+        
+        h1 .accent {
+            color: var(--accent);
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+        
+        .success-details {
+            background: rgba(21, 29, 56, 0.4);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px 24px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .detail-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .detail-icon {
+            font-size: 24px;
+            color: var(--accent);
+            margin-top: 2px;
+        }
+        
+        .detail-content h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .detail-content p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        
+        .value-prop {
+            background: rgba(212, 148, 30, 0.08);
+            border-left: 4px solid var(--accent);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+        
+        .value-prop h3 {
+            font-size: 16px;
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .value-prop p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        
+        .value-prop p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .btn {
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: var(--dark);
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--accent);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(212, 148, 30, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--text-muted);
+            padding: 40px 24px;
+            text-align: center;
+            font-size: 12px;
+        }
+        
+        footer a {
+            color: var(--text);
+            text-decoration: none;
+            margin: 0 12px;
+        }
+        
+        footer a:hover {
+            color: var(--accent);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+            
+            .success-container {
+                margin-top: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo">
+                <div class="logo-icon">◆</div>
+                THE ATHLETE CIRCLE
+            </a>
+        </div>
+    </header>
+    
+    <div class="success-container">
+        <span class="success-icon">✓</span>
+        <h1>Thank You, <span class="accent">Athlete.</span></h1>
+        <p class="subtitle">Your message is on its way. We're reading it now and will be in touch shortly.</p>
+        
+        <div class="success-details">
+            <div class="detail-item">
+                <div class="detail-icon">📧</div>
+                <div class="detail-content">
+                    <h3>Check Your Email</h3>
+                    <p>Look for our response within 24 hours. We'll outline next steps and answer your questions about building your Circle.</p>
+                </div>
+            </div>
+            
+            <div class="detail-item">
+                <div class="detail-icon">🎯</div>
+                <div class="detail-content">
+                    <h3>What to Expect</h3>
+                    <p>A personal response from someone who understands your situation — not an automated reply. We're here to help you navigate this the right way.</p>
+                </div>
+            </div>
+            
+            <div class="detail-item">
+                <div class="detail-icon">🚀</div>
+                <div class="detail-content">
+                    <h3>Ready to Move Faster?</h3>
+                    <p>Grab the Circle Kit below — it has everything you need to start building your advisory framework today.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="value-prop">
+            <h3>The Circle Kit Includes</h3>
+            <p>✓ Connor's case study (real decisions, real outcomes)</p>
+            <p>✓ 5-role framework breakdown (the exact structure that works)</p>
+            <p>✓ Decision templates for agents, contracts, and offers</p>
+            <p>✓ Red flags to avoid (the mistakes that cost athletes millions)</p>
+        </div>
+        
+        <div class="cta-buttons">
+            <a href="https://buy.stripe.com/test_bJe4graCi4RubySdzwaMU00" class="btn btn-primary">Get the Circle Kit - $97</a>
+            <a href="/" class="btn btn-secondary">Back to Home</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 The Athlete Circle. All rights reserved.</p>
+        <p>
+            <a href="/privacy.html">Privacy</a> |
+            <a href="/terms.html">Terms</a> |
+            <a href="/disclaimer.html">Disclaimer</a>
+        </p>
+    </footer>
+</body>
+</html>
