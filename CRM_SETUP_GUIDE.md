@@ -16,14 +16,15 @@ This document covers setting up the complete CRM system that:
 3. Name the first sheet tab: **"CRM"**
 4. Add these column headers in row 1:
 
-| A | B | C | D | E | F | G | H | I | J |
-|---|---|---|---|---|---|---|---|---|---|
-| Date | Name | Email | Phone | Sport | Grade | Free Ebook Sent | Paid Ebook ($97) | Advisory Interest | Status |
+| A | B | C | D | E | F | G | H | I | J | K |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Date | Name | Email | Phone | Sport | Grade | Free Ebook Sent | Paid Ebook ($97) | Advisory Interest | Status | Athlete Name |
 
 ### 1.2 Format the Sheet
 - Column A (Date): Format as MM/DD/YYYY
 - Column G-H: Use dropdowns: "Pending" | "Sent" | "Yes" | ""
-- Column J: Use dropdowns: "Free Ebook" | "Paid $97" | "Advisory Inquiry" | "Advisory Engaged" | "Nurture"
+- Column J: Use dropdowns: "Free Guide" | "Paid $97" | "Advisory Inquiry" | "Advisory Engaged" | "Nurture"
+- Column K (Athlete Name): free text — populated from the contact form's Athlete Name field
 
 ## Step 2: Google Service Account Setup
 

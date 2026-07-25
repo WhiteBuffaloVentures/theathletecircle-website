@@ -12,6 +12,11 @@ const auth = new google.auth.GoogleAuth({
 const sheets = google.sheets({ version: 'v4', auth });
 const SHEET_ID = process.env.ATHLETECIRCLE_SHEET_ID; // CRM Database sheet ID
 
+// Public, website-hosted copy of the current Free Guide.
+// Stable production path — future guide updates replace the PDF at this same
+// filename so this URL never has to change.
+const FREE_GUIDE_URL = 'https://athletecircle.ai/guide/TAC_Free_Guide_5_Decisions.pdf';
+
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
@@ -30,25 +35,27 @@ export default async function handler(req, res) {
     const warnings = [];
 
     // Step 1: Add contact to Google Sheets CRM (best-effort, non-blocking).
+    // Column K captures the Athlete Name (see CRM_SETUP_GUIDE.md).
     try {
         const timestamp = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
 
         await sheets.spreadsheets.values.append({
             spreadsheetId: SHEET_ID,
-            range: 'CRM!A:J',
+            range: 'CRM!A:K',
             valueInputOption: 'USER_ENTERED',
             resource: {
                 values: [[
-                    timestamp,           // Date
-                    name,                // Name
-                    email,               // Email
-                    phone || '',         // Phone
-                    sport || '',         // Sport
-                    grade || '',         // Grade
-                    'Pending',           // Free Ebook Sent (pending initial email)
-                    '',                  // Paid Ebook Status (empty until purchase)
-                    message ? 'Yes' : '', // Advisory Interest
-                    'Free Ebook'         // Status
+                    timestamp,           // A  Date
+                    name,                // B  Name (submitter)
+                    email,               // C  Email
+                    phone || '',         // D  Phone
+                    sport || '',         // E  Sport
+                    grade || '',         // F  Grade (not collected on this form)
+                    'Pending',           // G  Free Guide Sent
+                    '',                  // H  Paid Ebook Status (empty until purchase)
+                    message ? 'Yes' : '', // I  Advisory Interest
+                    'Free Guide',        // J  Status
+                    athlete || ''        // K  Athlete Name
                 ]],
             },
         });
@@ -57,32 +64,33 @@ export default async function handler(req, res) {
         warnings.push('crm_write_failed');
     }
 
-    // Step 2: Send the free ebook + Day 1 email to the submitter.
+    // Step 2: Send the Free Guide to the submitter.
     // This is the user-facing confirmation; its success drives the response.
     let confirmationSent = false;
     try {
         await resend.emails.send({
             from: 'hello@athletecircle.ai',
             to: email,
-            subject: 'Your Free Athlete Circle Playbook + Insider Tips',
+            subject: 'Your free guide — The 5 Decisions',
             html: `
                 <h2>Hey ${name}!</h2>
-                <p>Thanks for joining The Athlete Circle. I'm Connor, and I've helped dozens of student-athletes avoid the biggest mistakes in the critical first 48 hours.</p>
+                <p>Thanks for reaching out to The Athlete Circle. Here's your free guide:</p>
+                <p><strong><a href="${FREE_GUIDE_URL}">The 5 Decisions That Make or Break Every Student-Athlete's Career (PDF)</a></strong></p>
 
-                <p><strong>Your free playbook is attached.</strong> It covers:</p>
+                <p>It's about a 25-minute read, built for you and a parent to go through together. Inside you'll find:</p>
                 <ul>
-                    <li>The 3 roles you NEED on your advisory circle (most athletes miss 2 of these)</li>
-                    <li>Red flags in agent contracts (these cost athletes 6-7 figures)</li>
-                    <li>How to evaluate offers without mixing roles</li>
+                    <li>The Circle — the five advisory roles every athlete needs</li>
+                    <li>Four questions to ask any agent before you sign</li>
+                    <li>A five-question filter for every NIL offer</li>
+                    <li>Five contract red flags you'll recognize on sight</li>
+                    <li>One sentence you can say to anyone applying pressure</li>
                 </ul>
 
-                <p><strong>What's next?</strong> Over the next 5 days, I'll share real stories from athletes who won—and what they did differently.</p>
+                <p>Start with "Where You Are Right Now" to find the decision that's live for you today, then run the 30-minute Family Conversation at the end — that's the step that turns reading into a plan.</p>
 
-                <p>Looking forward to helping you build your circle.</p>
-                <p>— Connor</p>
+                <p>I read every submission personally, and I'll follow up about your situation (${sport || 'your sport'}) soon. If something's pressing, just reply to this email.</p>
 
-                <hr>
-                <p><small><a href="https://athletecircle.ai">Back to The Athlete Circle</a></small></p>
+                <p>— Connor, The Athlete Circle</p>
             `,
             reply_to: email,
         });
@@ -96,16 +104,16 @@ export default async function handler(req, res) {
         await resend.emails.send({
             from: 'noreply@athletecircle.ai',
             to: 'hello@athletecircle.ai',
-            subject: `✅ New Subscriber: ${name} (${sport || 'N/A'})`,
+            subject: `New Contact: ${name} (${sport || 'N/A'})`,
             html: `
-                <h3>New Form Submission</h3>
-                <p><strong>Name:</strong> ${name}</p>
+                <h3>New Contact Form Submission</h3>
+                <p><strong>Submitter:</strong> ${name}</p>
+                <p><strong>Athlete Name:</strong> ${athlete || 'Not provided'}</p>
                 <p><strong>Email:</strong> ${email}</p>
                 <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-                <p><strong>Sport:</strong> ${sport || 'Not provided'}</p>
-                <p><strong>Grade:</strong> ${grade || 'Not provided'}</p>
-                <p><strong>Message/Advisory Interest:</strong> ${message || 'N/A'}</p>
-                <p><strong>Status:</strong> Free ebook sent, Day 1 sequence initiated</p>
+                <p><strong>Sport / Background:</strong> ${sport || 'Not provided'}</p>
+                <p><strong>Their situation:</strong> ${message || 'N/A'}</p>
+                <p><strong>Status:</strong> Free guide (The 5 Decisions) link emailed to submitter</p>
                 <hr>
                 <p><a href="https://docs.google.com/spreadsheets/d/${SHEET_ID}">View in CRM</a></p>
             `,
@@ -121,14 +129,14 @@ export default async function handler(req, res) {
     // not, by themselves, fail the submission.
     if (!confirmationSent) {
         return res.status(502).json({
-            error: 'We could not send your confirmation email right now. Please try again in a moment.',
+            error: 'We could not send your free guide right now. Please try again in a moment.',
             warnings,
         });
     }
 
     return res.status(200).json({
         success: true,
-        message: 'Welcome! Check your email for the free playbook.',
+        message: 'Welcome! Check your email for your free guide.',
         email,
         warnings,
     });
