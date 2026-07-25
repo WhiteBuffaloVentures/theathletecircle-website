@@ -217,7 +217,6 @@ curl -X POST https://athletecircle.ai/api/contact \
 - `/api/contact.js` — Now writes to Google Sheets + sends Day 1 email
 - `/api/stripe-webhook.js` — NEW: Updates CRM on purchase
 - `/api/advisory-inquiry.js` — NEW: Handles advisory inquiry form
-- `/email-sequences.config.js` — Updated with form links in Days 2, 3, 5
 
 ## Next Steps
 1. Set up Google Sheet + service account
