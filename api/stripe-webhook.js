@@ -91,12 +91,12 @@ export default async function handler(req, res) {
                     <ul>
                         <li>5 modules: the Circle, agent evaluation, NIL deals, contracts, and your operating system</li>
                         <li>Scorecards, scripts, and contract red-flag playbooks</li>
-                        <li>The Connor Barry case study and a 30-day action plan</li>
+                        <li>Athlete case studies and a 30-day action plan</li>
                     </ul>
 
                     <p><strong>Bonus:</strong> your purchase includes a strategy call. When you're ready, reply to this email or reach us at hello@athletecircle.ai and we'll set it up.</p>
 
-                    <p>— Connor, The Athlete Circle</p>
+                    <p>— The Athlete Circle Team</p>
                 `,
             });
             confirmationSent = true;
