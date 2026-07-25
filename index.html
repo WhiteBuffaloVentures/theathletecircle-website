@@ -55,7 +55,7 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 6px;
             font-weight: 700;
             font-size: 16px;
             color: var(--text);
@@ -379,6 +379,13 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s;
+        }
+
+        .funnel-step:hover {
+            transform: translateY(-4px);
         }
         
         .funnel-number {
@@ -732,13 +739,29 @@
             }
         }
 
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 14px;
+                letter-spacing: 0.5px;
+                white-space: nowrap;
+            }
+            .logo img {
+                width: 36px !important;
+                height: 36px !important;
+            }
+            .cta-header {
+                padding: 8px 14px;
+                font-size: 11px;
+            }
+        }
+
     </style>
 </head>
 <body>
     <header>
         <div class="header-container">
             <a href="/" class="logo">
-                <div class="logo-icon">◆</div>
+                <img src="/brand/tac-brand-mark-5.png" alt="The Athlete Circle" style="width:40px;height:40px;border-radius:50%;display:block;">
                 THE ATHLETE CIRCLE
             </a>
             <nav>
@@ -747,7 +770,7 @@
                 <a href="#funnel">Get Started</a>
                 <a href="#contact">Contact</a>
             </nav>
-            <a href="/checkout.html" class="cta-header">Get Free Guide ▶</a>
+            <a href="/checkout.html" class="cta-header">Free Guide</a>
         </div>
     </header>
     
@@ -820,24 +843,24 @@
             <h2 class="section-title">Get Started <span class="accent">Today.</span></h2>
             
             <div class="funnel-steps">
-                <div class="funnel-step">
+                <a class="funnel-step" href="/checkout.html">
                     <div class="funnel-number">1</div>
                     <h3>Free Guide</h3>
                     <p>Learn the framework. Understand your Circle. Get clarity.</p>
                     <div class="price">Free</div>
-                </div>
-                <div class="funnel-step">
+                </a>
+                <a class="funnel-step" href="https://buy.stripe.com/bJe4graCi4RubySdzwaMU00">
                     <div class="funnel-number">2</div>
                     <h3>Build Your Athlete Circle</h3>
                     <p>5 modules + bonus pack. The complete decision playbook.</p>
                     <div class="price">$97</div>
-                </div>
-                <div class="funnel-step">
+                </a>
+                <a class="funnel-step" href="#contact">
                     <div class="funnel-number">3</div>
-                    <h3>Advisory Call</h3>
+                    <h3>Strategy Call</h3>
                     <p>Book directly. Build your Circle. Get expert guidance.</p>
                     <div class="price">Consultation</div>
-                </div>
+                </a>
             </div>
         </div>
     </section>

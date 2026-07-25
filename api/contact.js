@@ -88,9 +88,9 @@ export default async function handler(req, res) {
 
                 <p>Start with "Where You Are Right Now" to find the decision that's live for you today, then run the 30-minute Family Conversation at the end — that's the step that turns reading into a plan.</p>
 
-                <p>I read every submission personally, and I'll follow up about your situation (${sport || 'your sport'}) soon. If something's pressing, just reply to this email.</p>
+                <p>Our team reads every submission, and we'll follow up about your situation (${sport || 'your sport'}) soon. If something's pressing, just reply to this email.</p>
 
-                <p>— Connor, The Athlete Circle</p>
+                <p>— The Athlete Circle Team</p>
             `,
             reply_to: email,
         });
