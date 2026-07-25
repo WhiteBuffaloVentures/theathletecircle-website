@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 import { google } from 'googleapis';
 
-const resend = new Resend('re_b32VuVpp_DUvHwqdBj3KczjtNJpUo2RzT');
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Initialize Google Sheets API
 const auth = new google.auth.GoogleAuth({
