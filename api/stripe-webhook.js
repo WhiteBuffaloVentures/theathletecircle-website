@@ -63,28 +63,26 @@ export default async function handler(req, res) {
                     },
                 });
 
-                // Step 3: Send post-purchase email with advisory CTA
+                // Step 3: Send post-purchase email with the download link
                 await resend.emails.send({
                     from: 'hello@athletecircle.ai',
                     to: customer_email,
-                    subject: 'Welcome to The Athlete Circle 🎯',
+                    subject: 'Your Build Your Athlete Circle download 🎯',
                     html: `
                         <h2>You're In The Circle Now</h2>
-                        <p>Your "Build Your Athlete Circle" playbook is ready to download from your account.</p>
-                        
-                        <p><strong>What's Inside:</strong></p>
+                        <p>Thanks for your purchase! Your copy of <strong>Build Your Athlete Circle</strong> — the complete decision playbook — is ready:</p>
+                        <p><strong><a href="https://athletecircle.ai/guide/TAC_Build_Your_Athlete_Circle_Ebook.pdf">Download Build Your Athlete Circle (PDF)</a></strong></p>
+
+                        <p><strong>What's inside:</strong></p>
                         <ul>
-                            <li>Complete framework for building your advisory circle</li>
-                            <li>Contract templates & red flags guide</li>
-                            <li>Decision-making process for agents & offers</li>
-                            <li>Real case studies from athletes who won</li>
+                            <li>5 modules: the Circle, agent evaluation, NIL deals, contracts, and your operating system</li>
+                            <li>Scorecards, scripts, and contract red-flag playbooks</li>
+                            <li>The Connor Barry case study and a 30-day action plan</li>
                         </ul>
-                        
-                        <p><strong>Next Step:</strong> If you want personalized guidance on YOUR specific situation, we offer advisory services tailored to your sport, grade, and goals.</p>
-                        
-                        <p><a href="https://athletecircle.ai/advisory-inquiry" style="background: #000; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 4px; display: inline-block;">Learn About Advisory Services</a></p>
-                        
-                        <p>— Connor</p>
+
+                        <p><strong>Bonus:</strong> your purchase includes a strategy call. When you're ready, reply to this email or reach us at hello@athletecircle.ai and we'll set it up.</p>
+
+                        <p>— Connor, The Athlete Circle</p>
                     `,
                     reply_to: customer_email,
                 });
