@@ -12,8 +12,10 @@ const auth = new google.auth.GoogleAuth({
 const sheets = google.sheets({ version: 'v4', auth });
 const SHEET_ID = process.env.ATHLETECIRCLE_SHEET_ID; // CRM Database sheet ID
 
-// Public, website-hosted copy of the current Free Guide (v1.2).
-const FREE_GUIDE_URL = 'https://athletecircle.ai/guide/the-5-decisions.pdf';
+// Public, website-hosted copy of the current Free Guide.
+// Stable production path — future guide updates replace the PDF at this same
+// filename so this URL never has to change.
+const FREE_GUIDE_URL = 'https://athletecircle.ai/guide/TAC_Free_Guide_5_Decisions.pdf';
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
