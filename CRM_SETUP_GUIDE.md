@@ -53,7 +53,7 @@ Add these to your Vercel environment:
 GOOGLE_SERVICE_ACCOUNT_KEY=<paste entire JSON key here>
 ATHLETECIRCLE_SHEET_ID=<Sheet ID from URL: https://docs.google.com/spreadsheets/d/{SHEET_ID}/edit>
 STRIPE_WEBHOOK_SECRET=whsec_...
-RESEND_API_KEY=re_b32VuVpp_DUvHwqdBj3KczjtNJpUo2RzT
+RESEND_API_KEY=re_your_api_key_here
 ```
 
 **How to get SHEET_ID:**
