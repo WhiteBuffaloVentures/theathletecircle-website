@@ -1,7 +1,13 @@
+import Stripe from 'stripe';
 import { google } from 'googleapis';
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+// Stripe client. The API key is not used for signature verification (that uses
+// STRIPE_WEBHOOK_SECRET), but the SDK constructor requires a non-empty string,
+// so fall back to a placeholder to avoid a cold-start crash if it is unset.
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_webhook_verification_only');
 
 // Initialize Google Sheets API
 const auth = new google.auth.GoogleAuth({
@@ -15,23 +21,47 @@ const SHEET_ID = process.env.ATHLETECIRCLE_SHEET_ID;
 // Website-hosted production copy of the paid product.
 const BOOK_URL = 'https://athletecircle.ai/guide/TAC_Build_Your_Athlete_Circle_Ebook.pdf';
 
+// Stripe signature verification needs the raw, unparsed request body, so Vercel's
+// automatic body parsing must be disabled for this endpoint.
+export const config = {
+    api: {
+        bodyParser: false,
+    },
+};
+
+// Collect the raw request stream into a Buffer.
+async function readRawBody(readable) {
+    const chunks = [];
+    for await (const chunk of readable) {
+        chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
+    }
+    return Buffer.concat(chunks);
+}
+
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    // Vercel parses JSON bodies to an object; tolerate both object and string.
+    // Verify the Stripe signature against the raw body. Reject anything that is
+    // missing a signature, has an invalid signature, or fails verification.
     let event;
     try {
-        event = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
-    } catch (parseError) {
-        console.error('[stripe-webhook] Could not parse event body:', parseError);
-        return res.status(400).json({ error: 'Invalid payload' });
+        const rawBody = await readRawBody(req);
+        const signature = req.headers['stripe-signature'];
+        event = stripe.webhooks.constructEvent(
+            rawBody,
+            signature,
+            process.env.STRIPE_WEBHOOK_SECRET
+        );
+    } catch (err) {
+        console.error('[stripe-webhook] Signature verification failed:', err.message);
+        return res.status(400).json({ error: 'Webhook signature verification failed' });
     }
 
-    // Stripe Payment Links signal a completed purchase via checkout.session.completed.
-    // Acknowledge every other event type without action (prevents duplicate sends).
-    if (!event || event.type !== 'checkout.session.completed') {
+    // Only completed Payment Link / Checkout purchases trigger fulfillment.
+    // Acknowledge every other (valid) event type without acting on it.
+    if (event.type !== 'checkout.session.completed') {
         return res.status(200).json({ received: true });
     }
 
@@ -124,6 +154,6 @@ export default async function handler(req, res) {
         }
     }
 
-    // Always acknowledge the event so Stripe does not retry; failures are logged.
+    // Acknowledge the verified event so Stripe does not retry; failures logged.
     return res.status(200).json({ success: true, emailed: confirmationSent, warnings });
 }
